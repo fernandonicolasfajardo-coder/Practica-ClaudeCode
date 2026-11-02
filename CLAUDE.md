@@ -10,8 +10,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Tests (requiere `python -m pip install pytest`): `python -m pytest`
 - Un solo test: `python -m pytest tests/test_resumen_expediente.py::test_main_verbose_con_mensaje`
+- Lint (requiere `python -m pip install ruff`): `python -m ruff check .`
+- Tipado estricto (requiere `python -m pip install mypy`): `python -m mypy --strict resumen_expediente.py tests/`
 
-El script usa solo la biblioteca estándar; `pytest` es únicamente dependencia de desarrollo. No hay configuración de lint/build. Los tests redirigen el log a `tmp_path` (fixture `ruta_log`), así que nunca tocan el `log.txt` real; `tests/conftest.py` añade la raíz al `sys.path` para importar el módulo.
+El script usa solo la biblioteca estándar; `pytest`, `ruff` y `mypy` son únicamente dependencias de desarrollo. No hay configuración de build. Los tests redirigen el log a `tmp_path` (fixture `ruta_log`), así que nunca tocan el `log.txt` real; `tests/conftest.py` añade la raíz al `sys.path` para importar el módulo.
 
 ## Arquitectura
 
