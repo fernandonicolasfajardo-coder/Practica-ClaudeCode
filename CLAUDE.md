@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Ver logs: `log.txt` en la raíz del proyecto (el script lo crea/amplía en modo `append`).
 
 - Tests (requiere `python -m pip install pytest`): `python -m pytest`
+- Cobertura (requiere `python -m pip install pytest-cov`): `python -m pytest --cov=resumen_expediente --cov-report=term-missing --cov-fail-under=90`. El CI aplica el mismo umbral del 90 %; la única línea sin cubrir es la guarda `if __name__ == "__main__"`.
 - Un solo test: `python -m pytest tests/test_resumen_expediente.py::test_main_verbose_con_mensaje`
 - Lint (requiere `python -m pip install ruff`): `python -m ruff check .`
 - Tipado estricto (requiere `python -m pip install mypy`): `python -m mypy --strict resumen_expediente.py tests/`
