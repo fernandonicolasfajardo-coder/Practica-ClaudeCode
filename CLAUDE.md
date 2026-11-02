@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Comandos Frecuentes
 
 - Ejecutar script principal: `python resumen_expediente.py`
+- Opciones: `-v/--verbose` (muestra por consola la línea registrada) y `-m/--mensaje TEXTO` (la añade a la línea del log). Ejemplo: `python resumen_expediente.py -v -m "revisión trimestral"`.
 - Ver logs: `log.txt` en la raíz del proyecto (el script lo crea/amplía en modo `append`).
 
 No hay dependencias externas, tests ni configuración de lint/build: el proyecto es un único script que usa solo la biblioteca estándar.
