@@ -27,3 +27,12 @@ El script usa solo la biblioteca estándar; `pytest`, `ruff` y `mypy` son única
 - Python 3.10+ estrictamente tipado.
 - Manejo explícito de excepciones (nada de bloques `except:` vacíos).
 - Comentarios y documentación técnica en castellano.
+
+## graphify
+
+El grafo de conocimiento del proyecto se genera en `graphify-out/` (ignorado por git, regenerable). Requiere `python -m pip install graphifyy`. Se invoca con `python -m graphify`, porque el ejecutable `graphify` no está en el `PATH`.
+
+- Generar o actualizar el grafo (solo AST, sin coste de API): `python -m graphify update .`. Ejecutarlo tras modificar código.
+- Si existe `graphify-out/graph.json`, consultar antes de hacer grep o leer código fuente: `python -m graphify query "<pregunta>"`, `python -m graphify path "<A>" "<B>"` para relaciones y `python -m graphify explain "<concepto>"` para un concepto concreto. Después, leer solo las líneas que el grafo haya localizado.
+- Leer `graphify-out/GRAPH_REPORT.md` únicamente para una revisión amplia de la arquitectura.
+- Los hooks `PreToolUse` de graphify viven en `.claude/settings.json`, que no se versiona porque contiene rutas absolutas de la máquina local. Se instalan con `python -m graphify claude install` y se retiran con `python -m graphify claude uninstall`.
