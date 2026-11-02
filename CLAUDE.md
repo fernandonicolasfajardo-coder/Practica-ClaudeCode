@@ -2,8 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-# Directrices del Proyecto
-
 ## Comandos Frecuentes
 
 - Ejecutar script principal: `python resumen_expediente.py`
@@ -15,6 +13,7 @@ No hay dependencias externas, tests ni configuración de lint/build: el proyecto
 
 - `resumen_expediente.py` es el único módulo. Imprime por consola los 3 pilares de un proceso de auditoría (constante `PILARES`) y registra cada ejecución con marca de tiempo en `log.txt`.
 - La ruta de `log.txt` es relativa al directorio de trabajo, así que el log se genera donde se lance el comando; conviene ejecutarlo desde la raíz del proyecto.
+- Flujo de errores: `main()` devuelve el código de salida del proceso (`sys.exit(main())`). `registrar_ejecucion` deja propagar `OSError`; `main()` lo captura, escribe el mensaje en stderr y devuelve `1`. Los cambios deben mantener este patrón: las funciones auxiliares lanzan, solo `main()` decide el código de salida.
 
 ## Estilo y Normas de Código
 
