@@ -8,7 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Opciones: `-v/--verbose` (muestra por consola la línea registrada) y `-m/--mensaje TEXTO` (la añade a la línea del log). Ejemplo: `python resumen_expediente.py -v -m "revisión trimestral"`.
 - Ver logs: `log.txt` en la raíz del proyecto (el script lo crea/amplía en modo `append`).
 
-No hay dependencias externas, tests ni configuración de lint/build: el proyecto es un único script que usa solo la biblioteca estándar.
+- Tests (requiere `python -m pip install pytest`): `python -m pytest`
+- Un solo test: `python -m pytest tests/test_resumen_expediente.py::test_main_verbose_con_mensaje`
+
+El script usa solo la biblioteca estándar; `pytest` es únicamente dependencia de desarrollo. No hay configuración de lint/build. Los tests redirigen el log a `tmp_path` (fixture `ruta_log`), así que nunca tocan el `log.txt` real; `tests/conftest.py` añade la raíz al `sys.path` para importar el módulo.
 
 ## Arquitectura
 
